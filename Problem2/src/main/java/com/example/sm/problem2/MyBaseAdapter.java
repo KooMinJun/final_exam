@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class MyBaseAdapter extends BaseAdapter implements AdapterView.OnItemClickListener{
@@ -21,6 +21,7 @@ public class MyBaseAdapter extends BaseAdapter implements AdapterView.OnItemClic
         mContext = context;
         mData = data;
         mLayoutInflater = LayoutInflater.from(mContext);
+
     }
 
     @Override
@@ -67,5 +68,10 @@ public class MyBaseAdapter extends BaseAdapter implements AdapterView.OnItemClic
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // need something here
+        if(convertView == null){
+            convertView = mLayoutInflater.inflate(R.layout.list_view_item_layout, parent, false);
+        }
+
+        return convertView;
     }
 }
